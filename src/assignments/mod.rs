@@ -172,6 +172,7 @@ pub struct TestCase {
 ///
 /// Contains the actual output from running an assignment function,
 /// along with timing information and comparison to expected results.
+#[allow(dead_code)]
 pub struct TestCaseOutput {
     /// The input data that was used (after processing)
     pub input: String,
@@ -322,6 +323,7 @@ pub struct AssignmentOptions {
 ///     Ok(Some(42.into()))
 /// }
 /// ```
+#[allow(dead_code)]
 pub struct AssignmentRuntimeContext<'a> {
     /// The input lines from the puzzle file or example input
     pub data: &'a Vec<String>,
