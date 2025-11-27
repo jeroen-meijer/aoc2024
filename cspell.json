@@ -1,4 +1,8 @@
 {
-  "words": ["dirmod", "Deque", "Itertools"]
+  "words": [
+    "Deque",
+    "dirmod",
+    "itertools",
+    "Itertools"
+  ]
 }
-
