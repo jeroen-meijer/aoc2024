@@ -78,9 +78,9 @@ fn _run_single_assignment(assignment: &Assignment) {
 
         let Some(output) = output else {
             if is_example {
-                println!("{} (0ms)", "➖ No example.".bright_black());
+                println!("{}", "➖ No example.".bright_black());
             } else {
-                println!("{} (0ms)", "⚠️ No input.".yellow());
+                println!("{}", "⚠️ No input.".yellow());
             }
             return;
         };
@@ -111,7 +111,8 @@ fn _run_single_assignment(assignment: &Assignment) {
             Err(e) => print!("Error: {}.", e),
             _ => (),
         }
-        print!(" ({}ms)", output.runtime.as_millis());
+        let runtime_ms = output.runtime.as_secs_f64() * 1000.0;
+        print!(" ({:.3} ms)", runtime_ms);
 
         println!();
     }

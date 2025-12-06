@@ -34,7 +34,7 @@ pub fn get_assignment() -> Assignment {
     })
 }
 
-fn _run(context: AssignmentRuntimeContext) -> Result<Option<Answer>, String> {
+fn _run(context: AssignmentRuntimeContext) -> Result<Option<Answer>> {
     let (mut left, mut right): (Vec<_>, Vec<_>) = context
         .data
         .iter()

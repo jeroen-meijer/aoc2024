@@ -5,6 +5,7 @@ use std::io::{self, BufRead};
 use std::path::Path;
 use std::time::Duration;
 
+use anyhow::Result as AnyhowResult;
 use stopwatch::Stopwatch;
 
 mod prelude;
@@ -259,7 +260,7 @@ pub struct Assignment {
 }
 
 type InternalAssignmentCallback =
-    fn(context: AssignmentRuntimeContext) -> Result<Option<Answer>, String>;
+    fn(context: AssignmentRuntimeContext) -> AnyhowResult<Option<Answer>>;
 
 /// Configuration options for creating an `Assignment`.
 ///
@@ -441,7 +442,8 @@ impl Assignment {
             part_number: test_case.part_number,
             is_example: test_case.is_example,
             logging_enabled: false,
-        });
+        })
+        .map_err(|e| e.to_string());
         let runtime = stopwatch.elapsed();
         stopwatch.stop();
 
