@@ -47,18 +47,10 @@ pub fn get_assignment() -> Assignment {
     })
 }
 
-fn _run(context: AssignmentRuntimeContext) -> Result<Option<Answer>, String> {
+fn _run(context: AssignmentRuntimeContext) -> Result<Option<Answer>> {
     // TODO: Implement solution for day ${ASSIGNMENT_NUM}
-    
-    let result = if context.part_number == 1 {
-        // Part 1 solution
-        0
-    } else {
-        // Part 2 solution
-        0
-    };
 
-    Ok(Some(result.into()))
+    Ok(None)
 }
 EOF
 

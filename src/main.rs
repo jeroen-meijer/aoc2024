@@ -86,29 +86,27 @@ fn _run_single_assignment(assignment: &Assignment) {
         };
 
         match output.get_result() {
-            assignments::TestCaseResult::NoAnswer => print!("{}", "❓ No answer.".yellow()),
-            assignments::TestCaseResult::Correct => print!("{}", "✅ Correct.".green()),
-            assignments::TestCaseResult::Incorrect => print!("{}", "❌ Incorrect.".bright_red()),
-            assignments::TestCaseResult::Error => print!("{}", "🚨 Error.".red().bold()),
-            assignments::TestCaseResult::Unknown => print!("{}", "🤷 Unknown.".bright_yellow()),
+            assignments::TestCaseResult::NoAnswer => print!("{}", "❓ No answer".yellow()),
+            assignments::TestCaseResult::Correct => print!("{}", "✅ Correct".green()),
+            assignments::TestCaseResult::Incorrect => print!("{}", "❌ Incorrect".bright_red()),
+            assignments::TestCaseResult::Error => print!("{}", "🚨 Error".red().bold()),
+            assignments::TestCaseResult::Unknown => print!("{}", "🤷 Unknown".bright_yellow()),
         }
 
         // Add a space between the result and the expected/answered values
-        print!(" ");
-
         let did_succeed = output.get_result().is_correct();
 
         if let Some(e) = &output.expected
             && !did_succeed
         {
-            print!("Expected {}. ", e.to_string().bold());
+            print!("Expected {},", e.to_string().bold());
         }
 
         match &output.actual {
             Ok(Some(answer_value)) if !did_succeed => {
-                print!("Answered {}.", answer_value.to_string().bold())
+                print!(" Answered {}", answer_value.to_string().bold())
             }
-            Err(e) => print!("Error: {}.", e),
+            Err(e) => print!(" Error: {}", e),
             _ => (),
         }
         let runtime_ms = output.runtime.as_secs_f64() * 1000.0;
